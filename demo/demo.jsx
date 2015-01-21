@@ -2,11 +2,9 @@ var React = require('react');
 var classSet = require('react/lib/cx');
 var assign = require('react/lib/Object.assign');
 var Immutable = require('immutable');
-
 var {FormMixin, schema} = formulo = require('../');
 
-
-var Field = React.createClass({
+var ContextField = React.createClass({
 
   contextTypes: {
     formContext: React.PropTypes.object
@@ -30,6 +28,16 @@ function required(val) {
   return !!val.length;
 }
 
+var booleanSchema = {
+  isValid(val) {
+    return _.isBoolean(val);
+  },
+
+  getDefault() {
+    return false;
+  }
+};
+
 var requiredScalar = schema.Scalar(required);
 
 var Form = React.createClass({
@@ -50,6 +58,7 @@ var Form = React.createClass({
     return schema.Mapping({
       firstName: requiredScalar,
       lastName: requiredScalar,
+      check: booleanSchema,
       items: schema.Collection(requiredScalar),
       friends: schema.Collection(schema.Mapping({
         firstName: requiredScalar,
@@ -63,6 +72,7 @@ var Form = React.createClass({
     this.getFormContext().setIn([], Immutable.fromJS({
       firstName: 'foo',
       lastName: 'bar',
+      check: true,
       items: ['spam', 'eggs'],
       friends: [{
         firstName: 'lorem',
@@ -93,23 +103,30 @@ var Form = React.createClass({
       <form className={classSet({Form: true, FormValid: this.state.isValid, FormInvalid: !this.state.isValid})}>
         <div className='FormRow'>
           <label className='Label' htmlFor='firstName'>First name</label>
-          <Field keyPath={['firstName']}>
+          <ContextField keyPath={['firstName']}>
             <input className='Field' id='firstName' />
-          </Field>
+          </ContextField>
         </div>
         <div className='FormRow'>
           <label className='Label' htmlFor='lastName'>Last name</label>
-          <Field keyPath={['lastName']}>
+          <ContextField keyPath={['lastName']}>
             <input className='Field' id='lastName' />
-          </Field>
+          </ContextField>
         </div>
+        <div className='FormRow'>
+          <label className='Label' htmlFor='check'>Check</label>
+          <ContextField keyPath={['check']} valueProp='checked'>
+            <input className='Field' id='check' type='checkbox' />
+          </ContextField>
+        </div>
+
         <div className='FormRow'>
           <label className='Label'>Items</label>
           <button onClick={this.addItem}>add</button>
           {this.state.value.get('items').map((_, idx) =>
-            <Field keyPath={['items', idx]} key={idx}>
+            <ContextField keyPath={['items', idx]} key={idx}>
               <input className='Field' id={'items-' + idx} />
-            </Field>
+            </ContextField>
           ).toArray()}
         </div>
         <div className='FormRow'>
@@ -117,12 +134,12 @@ var Form = React.createClass({
           <button onClick={this.addFriend}>add</button>
           {this.state.value.get('friends').map((_, idx) =>
             <div className='Friend' key={idx}>
-              <Field keyPath={['friends', idx, 'firstName']}>
+              <ContextField keyPath={['friends', idx, 'firstName']}>
                 <input className='Field' id={`friends-${idx}-firstName`} />
-              </Field>
-              <Field keyPath={['friends', idx, 'lastName']}>
+              </ContextField>
+              <ContextField keyPath={['friends', idx, 'lastName']}>
                 <input className='Field' id={`friends-${idx}-lastName`} />
-              </Field>
+              </ContextField>
             </div>
           ).toArray()}
         </div>
