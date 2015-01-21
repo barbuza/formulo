@@ -1,0 +1,9 @@
+[*]
+indent_size = 2
+intent_style = space
+
+[*.md]
+indent_size = 4
+
+[Makefile]
+indent_style = tab

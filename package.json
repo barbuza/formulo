@@ -1,0 +1,22 @@
+{
+  "name": "formulo",
+  "version": "0.1.0",
+  "description": "simple stupid react forms",
+  "scripts": {
+    "prepublish": "nodeunit tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barbuza/formulo"
+  },
+  "peerDependencies": {
+    "eventemitter3": "^0.1.6",
+    "react": "^0.12.2",
+    "immutable": "^3.6.2"
+  },
+  "devDependencies": {
+    "jsdom": "^3.0.1",
+    "lodash": "^2.4.1",
+    "nodeunit": "^0.9.0"
+  }
+}
