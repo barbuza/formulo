@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    .Form {
+      padding: 1em;
+    }
+    .FormValid, .FieldValid {
+      border: 1px solid green;
+      outline: none;
+    }
+    .FormInvalid, .FieldInvalid {
+      border: 1px solid red;
+      outline: none;
+    }
+    .FormRow + .FormRow {
+      margin-top: 1em;
+    }
+    .Label {
+      margin-right: 0.5em;
+    }
+    .Field {
+      margin-right: 0.5em;
+    }
+    .Label + button {
+      margin: 0 0.5em;
+    }
+    .Value {
+      margin-top: 1em;
+    }
+    .Controls {
+      margin: 1em 0;
+    }
+    .Controls button {
+      margin-right: 0.5em;
+    }
+    .Friend {
+      padding-left: 1em;
+      margin: 0.5em 0;
+    }
+  </style>
+</head>
+<body>
+  <div id='app' />
+  <script src='/build/bundle.js'></script>
+</body>
+</html>
