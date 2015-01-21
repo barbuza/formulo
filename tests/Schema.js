@@ -9,7 +9,7 @@ var falsy = schema.Scalar(function() { return false; });
 exports.Scalar = function(test) {
   test.ok(truly.isValid('foo'));
   test.ok(!falsy.isValid('foo'));
-  test.strictEqual(truly.getDefault(), '');
+  test.strictEqual(truly.default, '');
   test.done();
 };
 
@@ -17,7 +17,7 @@ exports.Collection = function(test) {
   var trulyCollection = schema.Collection(truly);
   test.ok(trulyCollection.isValid(Immutable.List()));
   test.ok(trulyCollection.isValid(Immutable.List([1, 'foo', undefined])));
-  test.ok(Immutable.is(trulyCollection.getDefault(), Immutable.List()));
+  test.ok(Immutable.is(trulyCollection.default, Immutable.List()));
 
   var stringCollection = schema.Collection(stringScalar);
   test.ok(stringCollection.isValid(Immutable.List()));
@@ -41,6 +41,6 @@ exports.Mapping = function(test) {
   test.ok(!mapping.isValid(Immutable.Map({num: 1})));
   test.ok(!mapping.isValid(Immutable.Map({str: 'foo', num: 'spam'})));
   test.ok(!mapping.isValid(Immutable.Map({str: 1, num: 1})));
-  test.ok(Immutable.is(mapping.getDefault(), Immutable.Map({str: '', num: ''})));
+  test.ok(Immutable.is(mapping.default, Immutable.Map({str: '', num: ''})));
   test.done();
 };

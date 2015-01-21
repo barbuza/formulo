@@ -1,47 +1,21 @@
 <!doctype html>
 <html>
 <head>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css'>
   <style>
-    .Form {
-      padding: 1em;
-    }
-    .FormValid, .FieldValid {
-      border: 1px solid green;
-      outline: none;
-    }
-    .FormInvalid, .FieldInvalid {
-      border: 1px solid red;
-      outline: none;
-    }
-    .FormRow + .FormRow {
-      margin-top: 1em;
-    }
-    .Label {
-      margin-right: 0.5em;
-    }
-    .Field {
-      margin-right: 0.5em;
-    }
-    .Label + button {
-      margin: 0 0.5em;
+    button + button {
+      margin-left: 0.2em;
     }
     .Value {
       margin-top: 1em;
-    }
-    .Controls {
-      margin: 1em 0;
-    }
-    .Controls button {
-      margin-right: 0.5em;
-    }
-    .Friend {
-      padding-left: 1em;
-      margin: 0.5em 0;
+      font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+      white-space: pre-wrap;
+      font-size: 0.8em;
     }
   </style>
 </head>
 <body>
-  <div id='app' />
+  <div class='container' id='app' />
   <script src='/build/bundle.js'></script>
 </body>
 </html>
