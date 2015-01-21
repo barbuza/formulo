@@ -1,5 +1,9 @@
 # formulo - simple stupid react forms
 
+[![npm version](https://badge.fury.io/js/formulo.svg)](http://badge.fury.io/js/formulo)
+
+[![Build Status](https://snap-ci.com/barbuza/formulo/branch/master/build_image)](https://snap-ci.com/barbuza/formulo/branch/master)
+
 ### simple form
 
     var Form = React.createClass({
