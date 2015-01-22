@@ -128,7 +128,9 @@ var Form = React.createClass({
   render() {
     return (
       <form>
-        <h1>formulo <small>demo</small></h1>
+        <div className='page-header'>
+          <h1>formulo <small>demo</small></h1>
+        </div>
         <div className='row'>
           <div className='col-xs-6'>
             <FormGroup keyPath={['firstName']} />
