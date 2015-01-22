@@ -4,6 +4,8 @@
 
 [![Build Status](https://snap-ci.com/barbuza/formulo/branch/master/build_image)](https://snap-ci.com/barbuza/formulo/branch/master)
 
+[Demo](http://barbuza.github.io/formulo)
+
 ### simple form
 
 ```jsx
