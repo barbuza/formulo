@@ -3,6 +3,8 @@ var classSet = require('react/lib/cx');
 var cloneWithProps = require('react/lib/cloneWithProps');
 var assign = require('react/lib/Object.assign');
 var Immutable = require('immutable');
+require('bootstrap/dist/css/bootstrap.css');
+
 var {FormMixin, Field, schema} = require('../');
 
 var ContextField = React.createClass({
@@ -166,7 +168,7 @@ var Form = React.createClass({
               </div>
               <button className='btn btn-default btn-xs btn-primary' onClick={this.addFriend}>add</button>
             </div>
-            <div>
+            <div className='btn-group'>
               <button type='button' className='btn btn-default btn-success' onClick={this.populate}>populate</button>
               <button type='button' className='btn btn-default btn-danger' onClick={this.reset}>reset</button>
             </div>

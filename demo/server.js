@@ -2,13 +2,14 @@
 var path = require('path');
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
   entry: './demo.jsx',
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: __dirname,
+    filename: 'bundle.[hash].js',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -17,10 +18,21 @@ var config = {
     loaders: [{
       test: /\.jsx$/,
       loader: 'jsx?harmony&es5'
+    }, {
+      test: /\.css$/,
+      loader: 'style!css'
+    }, {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loader: 'file'
     }]
   },
   devtool: 'eval',
-  plugins: [new webpack.optimize.DedupePlugin()]
+  plugins: [
+    new webpack.optimize.DedupePlugin(),
+    new HtmlWebpackPlugin({
+      template: 'index.tmpl.html'
+    })
+  ]
 };
 
 new WebpackDevServer(webpack(config), {
